@@ -6,7 +6,9 @@ require 'active_record'
 module YamlDb
 	def self.dump(filename)
 		disable_logger
-		YamlDb::Dump.dump(File.new(filename, "w"))
+                file = File.new(filename, "w")
+		YamlDb::Dump.dump(file)
+                file.close
 		reenable_logger
 	end
 
